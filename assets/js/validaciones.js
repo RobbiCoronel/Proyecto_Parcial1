@@ -1,0 +1,1 @@
+$("#tabla").load("assets/casos/caso1.txt");
