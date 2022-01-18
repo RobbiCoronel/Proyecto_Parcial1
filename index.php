@@ -20,7 +20,9 @@
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 
 <body>
-
+   <!--
+   Inicio de navbar
+   -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
@@ -56,7 +58,9 @@
        
         </ul>
         <form class="d-flex">
-
+          <!--
+          Boton de Login
+          -->
           <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
             data-bs-whatever="@getbootstrap">Log in</button>
 
@@ -93,18 +97,22 @@
           </div>
         </form>
       </div>
-
+      <!--
+        Final de Login
+      -->
 
 
 
     </div>
   </nav>
   <!--
-    GRAFICAAAAAAAAAAAAAAAAAAAAAAA
--->
+      Final de navbar
+  -->
 
 
-
+  <!--
+    Inicio de la Gráfica
+  -->
 
   <div class="container">
     <div class="row">
@@ -118,11 +126,21 @@
               <button  class="btn btn-outline-dark" id="polar2">Pastel</button>
             </div>
         </div>
-         <div id="tabla">
+        
+
+        <!--
+          Inicio de tabla
+        -->
+        <div id="tabla">
          <table class="table table-striped table-hover" id="datatable">
             <thead>
               
               <tr>
+            
+              <!--
+            Inicializacion de variables de la tabla
+             -->
+
               <?php
                 $nom1="Quito";
                 $nom2="Cuenca";
@@ -135,8 +153,14 @@
               </tr>
             </thead>
             <tbody>
+
+           
             <?php
+                //Declaracion de la variable del archivo .csv
                 $archivo = "assets/datos.csv";
+
+              //Ingresamos valores a la tabla
+
               // Abrir archivo a procesar
               $fp = fopen($archivo,'r') or die("No se puede abrir el archivo");
               
@@ -145,28 +169,28 @@
                   //Procesar con un for, cada columna en esta fila
                   for ($i = 0, $j = count($csv_line); $i < $j; $i++) {
                     switch ($i) {
-                      case 0: //Sabemos que la primera columna es el mes
+                      case 0: //Primera columna es de productos
                         ?>
                         <tr>
                         <th><?php echo $csv_line[$i];?></th>
                         <?php 
                         
                         break;
-                      case 1: //Sabemos que la segunda columna es la venta
+                      case 1: //Segunda columna es de Quito
                         ?>
                         <td><?php echo $csv_line[$i] ?></td>
                         
                         <?php
                        
                         break;
-                      case 2: //Sabemos que la segunda columna es la venta
+                      case 2: //Tercera columna es de Cuenca
                         ?>
                         <td><?php echo $csv_line[$i] ?></td>
                         
                         <?php  
 
                         break;
-                      case 3: //Sabemos que la segunda columna es la venta
+                      case 3: //Cuarta columna es de Guayaquil 
                         ?>
                         <td><?php echo $csv_line[$i] ?></td>
                         </tr>
@@ -185,10 +209,14 @@
               
             </tbody>
           </table>
-          
+          <!-- 
+            Final de la tabla
+          -->
 
         </figure>
-        
+        <!-- 
+            Botones de exportacion
+          -->
         <div class="row">
             <div class="col text-center mb-3">
               <button class="btn btn-outline-dark" id="botonpng2">PNG</button>
@@ -198,7 +226,10 @@
         </div> 
         
       </div>
-           
+      
+      <!-- 
+         Filtracion de datos
+      -->
       <div class="col ms-5 mt-4">
       <h3 class="text-center">Filtrar Datos</h3>
 
@@ -224,6 +255,9 @@
 
   </div>
   
+  <!-- 
+     Librerias del calendario
+  -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
   <script type="text/javascript" src="assets/js/calendar.js"></script>
@@ -236,10 +270,13 @@
         console.log(a.value);
         obtener=a.value;
       }
+
+    //Escoger dia del mes
     calendar.getElement().addEventListener('change', e => {
    
     console.log(obtener);
     let dia=calendar.value().format('D');
+    //Llama AJAX con la estructura de jquery
       $("#tabla").load("assets/casos1.php",{dia,obtener});
     });
   
@@ -249,8 +286,12 @@
 </body>
 <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
 
+
 <script type="text/javascript" src="assets/js/script.js"></script>
 
+<!-- 
+    Inicio de footer 
+-->
 <footer class="bg-light text-center text-dark">
 
         <div class="container  p-1 pb-0">
@@ -264,6 +305,10 @@
           <a class="refe" href="#">ACSO</a>
         </div>
         <!-- Copyright -->
-      </footer>
+      </footer>   
+<!-- 
+    Final de footer 
+-->
+
   </div>
 </html>
